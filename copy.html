@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>xox</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="1.css">
+    </head>
+    <body>
+        
+        <button id="0" onclick="place(this.id)" class="board"> </button> <!-- whitespace -->
+        <button id="1" onclick="place(this.id)" class="board"> </button>
+        <button id="2" onclick="place(this.id)" class="board"> </button><br>
+        <button id="3" onclick="place(this.id)" class="board"> </button>
+        <button id="4" onclick="place(this.id)" class="board"> </button>
+        <button id="5" onclick="place(this.id)" class="board"> </button><br>
+        <button id="6" onclick="place(this.id)" class="board"> </button>
+        <button id="7" onclick="place(this.id)" class="board"> </button>
+        <button id="8" onclick="place(this.id)" class="board"> </button><br>
+
+        <button onclick="restart()">restart</button>
+        
+
+        <script>
+            let grid = [0,0,0,0,0,0,0,0,0]
+            let counter = 0
+            let symbol = ['x','o']
+
+            function place(id) {
+
+                current = document.getElementById(id)
+                current.disabled = true
+                if (counter % 2 == 0) {
+                    current.innerHTML = symbol[0]
+                    
+                    grid[id] = symbol[0]
+                    counter += 1
+                } else {
+                    current.innerHTML = symbol[1]
+                    grid[id] = symbol[1]
+                    counter += 1
+                }
+            
+                check(0,9,3,1) 
+                check(2,3,1,2)
+                check(0,3,1,3)
+                check(0,3,1,4)
+            }
+
+            function win_state(win_pointers) {
+                win_pointers.forEach((pointer) => {
+                    document.getElementById(pointer).className += " win"
+                })
+
+                let board = document.getElementsByClassName("board")
+                Array.from(board).forEach((element) => {      
+                    element.disabled = true
+                })
+                // array.from(board) jest potrzebne bo board to
+                // HTMLcollection a nie array, i nie ma przez to metody forEach
+
+                
+            }
+            function check(min , max, step, condition_distance) {
+                for (let pointer = min; pointer != max; pointer+=step) {
+                    if (grid[pointer] != 0 && grid[pointer] == grid[pointer+condition_distance] && grid[pointer+condition_distance] == grid[pointer+(condition_distance*2)]) {
+                        win_pointers = [pointer, pointer+condition_distance, pointer+(2*condition_distance)]
+                        win_state(win_pointers)
+                    }
+                }
+            }   
+
+            function restart() {
+                location.reload()
+            }
+
+
+        </script>
+    </body>
+</html>
