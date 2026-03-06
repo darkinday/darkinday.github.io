@@ -1,0 +1,14 @@
+
+
+.board {
+    width: 100px;
+    height: 100px;
+    font-size:400%;
+    color: black;
+    vertical-align: top;
+    margin-top: 4px;
+}
+.win {
+    color: red;
+}
+
