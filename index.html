@@ -21,7 +21,8 @@
         <button id="7" onclick="main(this.id)" class="board"></button>
         <button id="8" onclick="main(this.id)" class="board"></button><br>
         <button onclick="restart()">restart</button> 
-        <button onclick="change_start()" id="change_start">zaczyna: gracz</button>
+        <button onclick="change_start()" id="change_start">zaczyna: gracz</button> <br>
+        <h1 id="win_message"></h1>
         <script>
             let board = ["","","","","","","","",""]
             let robot_start = false
@@ -54,7 +55,7 @@
             function check(step, condition_distance, min, max) {
                 for (pointer=min; pointer<max; pointer+=condition_distance) {
                     if (board[pointer] != "" && board[pointer] == board[pointer+step] && board[pointer+step] == board[pointer+(step*2)]) {
-                        console.log(board[pointer], " wygrywa")
+                        document.getElementById("win_message").innerHTML = (board[pointer] + " wygrywa")
                         let win_pointers = [pointer, pointer+step, pointer+(step*2)]
                         win(win_pointers)
                         ongoing = false
@@ -107,3 +108,4 @@
         </script>
     </body>
 </html>
+
