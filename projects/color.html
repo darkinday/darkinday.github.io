@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>zmien kolor strony</title>
+        <link rel="stylesheet" href="../2.css">
+    </head>
+    <body style="height: 100%;">
+        <header>
+            <a class="menu" href="../omnie.html">o mnie</a> 
+            <a class="menu" href="../projekty.html">projekty </a>
+            <a class="menu" href="../index.html">strona glowna</a>
+        </header>
+        <button onclick="change()" id="1">zmien kolor strony</button>
+        <footer>
+            <p>telefon: 123 456 789</p>
+            <p>email: tulin.pulin@tmail.pl</p>
+        </footer>
+        <script>
+
+            document.getElementById("1").style.width = "100%"
+            document.getElementById("1").style.height = "100%"
+            function change() { 
+                let red = Math.floor(Math.random() * 255)
+                let green = Math.floor(Math.random() * 255)
+                let blue = Math.floor(Math.random() * 255)
+
+                let button = document.getElementById("1")
+                button.style.backgroundColor = "rgb(" + red + "," + green + "," + blue +")"
+                button.style.textAlign = center
+                button.style.fontSize = 20
+
+            }
+        </script>
+    </body>
+</html>

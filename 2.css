@@ -1,8 +1,8 @@
 body {
-    background-color: rgb(255, 253, 201);
+    background-color: white;
 }
 footer {
-    background-color: rgb(255, 147, 165);
+    background-color: gray;
     position: fixed;
     left: 0;
     bottom: 0;
